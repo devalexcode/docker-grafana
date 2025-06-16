@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  grafana:
+    image: ${GRAFANA_IMAGE}
+    container_name: grafana
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
